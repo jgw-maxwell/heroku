@@ -136,11 +136,11 @@ class Heroku::Client
   end
 
   def add_ssl(app_name, pem, key)
-    json_decode(post("/apps/#{app_name}/ssl", :pem => pem, :key => key).to_s)
+    json_decode(post("v2/apps/#{app_name}/ssl", :pem => pem, :key => key).to_s)
   end
 
   def remove_ssl(app_name, domain)
-    delete("/apps/#{app_name}/domains/#{domain}/ssl").to_s
+    delete("v2/apps/#{app_name}/domains/#{domain}/ssl").to_s
   end
 
   def clear_ssl(app_name)
